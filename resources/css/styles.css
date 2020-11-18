@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+
+/* General Webpage Styling */
+
+html {
+    font-family: "Comic Sans MS", Arial, sans-serif;
+    font-style: italic;
+    background-color: gainsboro;
+    color: black;
+}
+
+body {
+    width: 75%;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Bangers';
+    font-style: normal;
+    font-weight: lighter;
+}
+
+
+/* Header Styling */
+
+h1 {
+    font-size: 4em;
+    display: inline;
+}
+
+nav {
+    float: right;
+}
+
+/* Main Body Styling */ 
+
+.sheet {
+    clear: both;
+    background-color: palegoldenrod;
+    border: 2px solid black;
+    padding: 0 10px 10px 10px;
+    margin-bottom: 15px;
+}
+
+.example { 
+    background-color: dimgray;
+    border: 1px solid black;
+    box-shadow:3px 3px 0 #222;
+    padding: 5px;
+}
+
+.example code {
+    color: chartreuse;
+}
+
+code {
+    font-style: normal;
+    color:red;
+}
+
+h3 code {
+    font-weight: bold;
+}
+
+p code {
+    font-style: normal;
+    color: black;
+    background-color: lightgrey;
+    border-radius: 2px;
+}
+
+/* Table Styling */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+th, tfoot td {
+    border: 2px solid black;
+    background-color: darkkhaki;
+}
+
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+td:nth-child(3) {
+    text-align: left;
+}
+
+tr:nth-child(odd) {
+    background-color: lemonchiffon;
+}
+
+tr:nth-child(even) {
+    background-color:lightyellow;
+}
+
+/* Footer Styling */
+
+footer {
+    text-align: right;
+}
