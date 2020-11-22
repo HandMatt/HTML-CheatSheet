@@ -14,7 +14,7 @@ body {
     margin: 0 auto;
 }
 
-h1, h2, h3 {
+h1, h2, h3, caption {
     font-family: 'Bangers';
     font-style: normal;
     font-weight: lighter;
@@ -23,13 +23,22 @@ h1, h2, h3 {
 
 /* Header Styling */
 
+header {
+    margin-block-start: 16px;
+    margin-block-end: 16px;
+}
+
 h1 {
     font-size: 4em;
     display: inline;
 }
 
 nav {
-    float: right;
+    float: right; 
+}
+
+nav,ul {
+    margin: 0;
 }
 
 /* Main Body Styling */ 
@@ -75,6 +84,12 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 2px solid black;
+    margin: 16px 0;
+}
+
+caption {
+    margin-bottom: 0.5em;
+    font-size: 1.17em;
 }
 
 th, tfoot td {
