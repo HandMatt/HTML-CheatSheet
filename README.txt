@@ -11,7 +11,7 @@ Content is easy to read and digest, I have made use of www.hemmingwayapp.com in 
     22/11/2020:
     - Completed tag definitions, example, and output sections for Forms.
     - Altered padding and margins, added horizontal rows and table captions.
-    -Fixed various typos. 
+    - Fixed various typos. 
 
     18/11/2020:
     - Rewrote some sections with use of www.hemmingwayapp.com
