@@ -23,6 +23,10 @@ Content is easy to read and digest, I have made use of www.hemmingwayapp.com in 
         - discovered 'Bangers' font-family, applied to headings  
     - Added 'Forms' cheat'card'. No content added. 
 
+    11/03/2021:
+    - CRUD page added
+    - SQL page added
+
 *** To-do ***
 
     - Add <optgroup>, <legend> <progress> and <button> examples to forms example.
