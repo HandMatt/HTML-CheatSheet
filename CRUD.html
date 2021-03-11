@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>CRUD Cheatsheet</title>
+		<link href="./resources/css/normalize.css" type="text/css" rel="stylesheet">
+		<link href="./resources/css/styles.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<h1>CRUD Cheatsheet</h1>
+			<nav>
+        <a href="index.html">HOME</a>
+        <a href="SQL.html">SQL Cheatsheet</a>
+			</nav>
+		</header>
+		<main>
+			<div id="introduction" class="sheet">
+        <h2>Introduction to CRUD</h2>
+        <p>When we are building APIs, we want our models to provide four basic types of functionality. The model must be able to Create, Read, Update, and Delete resources. A model should have the ability to perform at most these four functions in order to be complete.</p>
+        <hr/>
+        <h2>REST</h2>
+        <p>In a REST environment, CRUD often corresponds to the HTTP methods POST, GET, PUT, and DELETE, respectively. These are the fundamental elements of a persistent storage system.</p>
+      </div>
+      <div id="create" class="sheet">
+        <h2>Create</h2>
+        <p>To create resources in a REST environment, we most commonly use the HTTP POST method. POST creates a new resource of the specified resource type.</p>
+        <hr/>
+        <h3>Example:</h3>
+        <p>Request:</p>
+				<div class="example"> 
+					<code>POST http://www.restaurant.com/dishes/</code>
+        </div>
+        <p>Body -</p>
+        <div class="example"> 
+					<code>{<br/>&nbsp;&nbsp;"dish": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"name": “Avocado Toast”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"price": 8<br/>&nbsp;&nbsp;}<br/>}</code>
+        </div>
+        <p>This creates a new item with a <code>name</code> value of <code>“Avocado Toast”</code> and a <code>price</code> value of 8. Upon successful creation, the server should return a header with a link to the newly-created resource, along with a HTTP response code of 201 (CREATED).</p>
+        <h3>Response:</h3>
+        <p>Status Code - 201 (CREATED)</p>
+        <p>Body -</p>
+        <div class="example"> 
+					<code>{<br/>&nbsp;&nbsp;"dish": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"id": 1223,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"name": “Avocado Toast”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"price": 8<br/>&nbsp;&nbsp;}<br/>}</code>
+        </div>
+        <p>From this response, we see that the <code>dish</code> with <code>name</code> “Avocado Toast” and <code>price</code> 8 has been successfully created and added to the <code>dishes</code> resource.</p>
+      </div>
+      <div id="read" class="sheet">
+        <h2>Read</h2>
+        <p>To read resources in a REST environment, we use the GET method. Reading a resource should never change any information - it should only retrieve it. If you call GET on the same information 10 times in a row, you should get the same response on the first call that you get on the last call.</p>
+        <hr/>
+        <p>GET can be used to read an entire list of items:</p>
+        <h3>Example:</h3>
+        <p>Request:</p>
+				<div class="example"> 
+					<code>GET http://www.restaurant.com/dishes/</code>
+        </div>
+        <h3>Response:</h3>
+        <p>Status Code - 200 (OK)</p>
+        <p>Body -</p>
+        <div class="example"> 
+					<code>{<br/>&nbsp;&nbsp;"dishes": [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": “Spring Rolls”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price": 6<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 2,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": “Mozzarella Sticks”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price": 7<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 1223,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": “Avocado Toast”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price": 8<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 1224,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": “Muesli and Yogurt”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price": 5<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>}</code>
+        </div>
+        <br/>
+        <hr/>
+        <p>GET requests can also be used to read a specific item, when its <code>id</code> is specified in the request:</p>
+        <h3>Example:</h3>
+        <p>Request:</p>
+				<div class="example"> 
+					<code>GET http://www.restaurant.com/dishes/1223</code>
+        </div>
+        <h3>Response:</h3>
+        <p>Status Code - 200 (OK)</p>
+        <p>Body -</p>
+        <div class="example"> 
+					<code>{<br/>&nbsp;&nbsp;"id": 1223,<br/>&nbsp;&nbsp;"name": “Avocado Toast”,<br/>&nbsp;&nbsp;"price": 8<br/>}</code>
+        </div>
+        <p>After this request, no information has been changed in the database. The item with <code>id</code> 1223 has been retrieved from the <code>dishes</code> resource, and not modified. When there are no errors, GET will return the HTML or JSON of the desired resource, along with a 200 (OK) response code. If there is an error, it most often will return a 404 (NOT FOUND) response code.</p>
+      </div>
+      <div id="update" class="sheet">
+        <h2>Update</h2>
+        <p>PUT is the HTTP method used for the CRUD operation, Update.</p>
+        <hr/>
+        <p>For example, if the price of Avocado Toast has gone up, we should go into the database and update that information. We can do this with a PUT request.</p>
+        <h3>Example:</h3>
+        <p>Request:</p>
+				<div class="example"> 
+					<code>PUT http://www.myrestaurant.com/dishes/1223</code>
+        </div>
+        <p>Body -</p>
+        <div class="example"> 
+					<code>{<br/>&nbsp;&nbsp;"dish": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"name": “Avocado Toast”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"price": 10<br/>&nbsp;&nbsp;}<br/>}</code>
+        </div>
+        <p>his request should change the item with <code>id</code> 1223 to have the attributes supplied in the request body. This <code>dish</code> with <code>id</code> 1223 should now still have the <code>name</code> “Avocado Toast”, but the <code>price</code> value should now be 10, whereas before it was 8.</p>
+        <h3>Response:</h3>
+        <p>Status Code - 200 (OK)</p>
+        <p>Body - not required</p>
+        <p>The response includes a Status Code of 200 (OK) to signify that the operation was successful, but it need not return a response body.</p>
+      </div>
+      <div id="delete" class="sheet">
+        <h2>Delete</h2>
+        <p>The CRUD operation Delete corresponds to the HTTP method DELETE. It is used to remove a resource from the system.</p>
+        <hr/>
+        <p>Let’s say that the world avocado shortage has reached a critical point, and we can no longer afford to serve this modern delicacy at all. We should go into the database and delete the item that corresponds to “Avocado Toast”, which we know has an id of 1223.</p>
+        <h3>Example</h3>
+        <p>Request:</p>
+        <div class="example"> 
+					<code>DELETE http://www.myrestaurant.com/dishes/1223</code>
+        </div>
+        <p>Such a call, if successful, returns a response code of 204 (NO CONTENT), with no response body. The dishes resource should no longer contain the dish object with id 1223.</p>
+        <h3>Response:</h3>
+        <p>Status Code - 204 (NO CONTENT)</p>
+        <p>Body - None</p>
+        <p>Calling GET on the <code>dishes</code> resource after this DELETE call would return the original list of dishes with the <code>{"id": 1223, "name": “Avocado Toast”, "price": 10}</code> entry removed. All other <code>dish</code> objects in the <code>dishes</code> resource should remain unchanged. If we tried to call a GET on the item with <code>id</code> 1223, which we just deleted, we would receive a 404 (NOT FOUND) response code and the state of the system should remain unchanged.</p>
+        <p>Calling DELETE on a resource that does not exist should not change the state of the system. The call should return a 404 response code (NOT FOUND) and do nothing.</p>
+      </div>
+      <div id="recap" class="sheet">
+        <h2>Recap</h2>
+        <p>The functions to Create, Read, Update, and Delete resources are fundamental components of a usable storage model. Imagine we are trying to design a system that keeps track of comic books, including the title of each comic, who authored it, and the number of pages of the comic. An example comic object would look like:</p>
+        <div class="example"> 
+					<code>{<br/>&nbsp;&nbsp;"comic": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"id": 1<br/>&nbsp;&nbsp;&nbsp;&nbsp;"name": “Batman: The Dark Knight Returns”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;“author”: “Frank Miller”,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pages": 48<br/>&nbsp;&nbsp;}<br/>}</code>
+        </div>
+        <p>All of the comics are stored in a <code>comics</code> resource at <code>www.comicopedia.com/comics</code>.</p>        
+        <h3>Create</h3>
+        <p><strong>Route:</strong> POST/comics</p>
+        <p><strong>Effect on Database:</strong> Adds the comic provided in the request body to the database.</p>
+        <p><strong>Response Body:</strong> <code>{ "comic": The newly-created comic }</code></p>
+        <p><strong>Success Response Code:</strong> 201</p>
+        <h3>Read (all comics)</h3>
+        <p><strong>Route:</strong> GET/comics</p>
+        <p><strong>Effect on Database:</strong> None.</p>
+        <p><strong>Response Body:</strong> <code>{ "comics": [ Array of all saved comics ] }</code></p>
+        <p><strong>Success Response Code:</strong> 200</p>
+        <h3>Read (one comic)</h3>
+        <p><strong>Route:</strong> GET/comics/:id</p>
+        <p><strong>Effect on Database:</strong> None.</p>
+        <p><strong>Response Body:</strong> <code>{ "comic": The comic with the specified ID }</code></p>
+        <p><strong>Success Response Code:</strong> 200</p>
+        <h3>Update</h3>
+        <p><strong>Route:</strong> PUT/comics/:id</p>
+        <p><strong>Effect on Database:</strong> Updates the comic with the specified ID to have the comic information provided in the request body</p>
+        <p><strong>Response Body:</strong> <code>{ "comic": The updated comic now saved in the database }</code></p>
+        <p><strong>Success Response Code:</strong> 200</p>
+        <h3>Delete</h3>
+        <p><strong>Route:</strong> DELETE/comics/:id</p>
+        <p><strong>Effect on Database:</strong> Removes the comic with the specified ID from the database</p>
+        <p><strong>Response Body:</strong> None</p>
+        <p><strong>Success Response Code:</strong> 204</p>
+      </div>
+    </main>
+		<footer>
+			<h6>
+				Nov. 2020&nbsp;&nbsp;M.Hand&nbsp;&nbsp;<a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a>
+			</h6> 
+		</footer>
+	</body>
+</html>

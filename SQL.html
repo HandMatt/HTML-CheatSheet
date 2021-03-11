@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SQL Cheatsheet</title>
+		<link href="./resources/css/normalize.css" type="text/css" rel="stylesheet">
+		<link href="./resources/css/styles.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<h1>SQL Cheatsheet</h1>
+			<nav>
+				<a href="index.html">HTML5 Cheatsheet</a>
+				<a href="CRUD.html">CRUD Cheatsheet</a>
+			</nav>
+		</header>
+		<main>
+			<div id="introduction" class="sheet">
+				<h2>Introduction to SQL</h2>
+				<p>SQL stands for Structured Query Language. It is used to communicate with a database.</p>
+				<hr/>
+				<h3><code>SELECT</code></h3>
+				<p><code>SELECT</code> is the clause used every time you want to query information from a database.</p>
+				<hr/>
+				<h3><code>AS</code></h3>
+				<p><code>AS</code> renames a column or table.</p>
+				<hr/>
+				<h3><code>DISTINCT</code></h3>
+				<p><code>DISTINCT</code> returns unique values.</p>
+				<hr/>
+				<h3><code>WHERE</code></h3>
+				<p><code>WHERE</code> is a popular command that lets you filter the results of the query based on conditions that you specify.</p>
+				<hr/>
+				<h3><code>LIKE and BETWEEN</code></h3>
+				<p><code>LIKE</code> and <code>BETWEEN</code> are special operators.</p>
+				<hr/>
+				<h3><code>AND and OR</code></h3>
+				<p><code>AND</code> and <code>OR</code> combines multiple conditions.</p>
+				<hr/>
+				<h3><code>ORDER BY</code></h3>
+				<p><code>ORDER BY</code> sorts the results.</p>
+				<hr/>
+				<h3><code>LIMIT</code></h3>
+				<p><code>LIMIT</code> specifies the maximum number of rows that the query will return.</p>
+				<hr/>
+				<h3><code>CASE</code></h3>
+				<p><code>CASE</code> creates different outputs.</p>
+				<hr/>
+				<h3>Example:</h3>
+				<div class="example"> 
+					<code>SELECT name,<br/>&nbsp;CASE<br/>&nbsp;&nbsp;WHEN imdb_rating > 8 THEN 'Fantastic'<br/>&nbsp;&nbsp;WHEN imdb_rating > 6 THEN 'Poorly Received'<br/>&nbsp;&nbsp;ELSE 'Avoid at All Costs'<br/>&nbsp;END AS 'Review'<br/>FROM movies;</code>
+				</div>
+				<p>The above code would produce query results from a movies database. The results will have two columnns, name and Review. Conditional statements are applied to the imdb_rating values. The Review column will have one of three string values.</p>
+			</div>
+			<div id="manipulation" class="sheet">
+				<h2>SQL Database Manipulation</h2>
+				<p>SQL is a programming language that can be used to manage data stored in a relational database. It is designed to manipulate and manage data.</p>
+				<ul>
+					<li>A <strong>relational database</strong> is a database that organizes information into one or more tables.</li>
+					<li>A <strong>table</strong> is a collection of data organizes into rows and columns.</li>
+					<li><strong>Constraints</strong> add information about how a column can be used.</li>
+				</ul>
+				<hr/>
+				<h3><code>CREATE TABLE</code></h3>
+				<p><code>CREATE TABLE</code> creates a new table.</p>
+				<hr/>
+				<h3><code>INSERT INTO</code></h3>
+				<p><code>INSERT INTO</code> adds a new row to a table.</p>
+				<hr/>
+				<h3><code>SELECT</code></h3>
+				<p><code>SELECT</code> queries data from a table.</p>
+				<hr/>
+				<h3><code>ALTER TABLE</code></h3>
+				<p><code>ALTER TABLE</code> changes an existing table.</p>
+				<hr/>
+				<h3><code>UPDATE</code></h3>
+				<p><code>UPDATE</code> edits a row in a table.</p>
+				<hr/>
+				<h3><code>DELETE FROM</code></h3>
+				<p><code>DELETE FROM</code> deletes rows from a table.</p>
+			</div>
+			<div id="aggregate" class="sheet">
+				<h2>Aggregate Functions</h2>
+				<p>Aggregate functions are used to perform calculations on data.</p>
+				<hr/>
+				<h3><code>COUNT()</code></h3>
+				<p><code>COUNT()</code>: count the number of rows.</p>
+				<hr/>
+				<h3><code>SUM()</code></h3>
+				<p><code>SUM()</code>: the sum of the values in a column</p>
+				<hr/>
+				<h3><code>MAX() / MIN()</code></h3>
+				<p><code>MAX()</code>/<code>MIN()</code>: the largest/smallest value.</p>
+				<hr/>
+				<h3><code>AVG()</code></h3>
+				<p><code>AVG()</code>: the average of the values in a column.</p>
+				<hr/>
+				<h3><code>ROUND()</code></h3>
+				<p><code>ROUND()</code>: round the values in the column.</p>
+				<hr/>
+				<p><strong>Aggregate functions</strong> combine multiple row together to form a single value of more meaningful information.</p>
+				<hr/>
+				<h3><code>GROUP BY</code></h3>
+				<p><code>GROUP BY</code> is a clause used with aggregate functions to combine date from one or more columns.</p>
+				<hr/>
+				<h3><code>HAVING</code></h3>
+				<p><code>HAVING</code> limit the results of a query based on an aggregate property.</p>
+			</div>
+			<div id="multipleTables" class="sheet">
+				<h2>Multiple Tables</h2>
+				<p>The below clauses allow for querying information from multiple tables</p>
+				<hr/>
+				<h3><code>JOIN</code></h3>
+				<p><code>JOIN</code> will combine rows from different tables if the condition is true.</p>
+				<hr/>
+				<h3><code>LEFT JOIN</code></h3>
+				<p><code>LEFT JOIN</code> will return every row in the <strong>LEFT</strong> table, and if the join condition is not met, <code>NULL</code> values are used to fill in the columns from the <strong>RIGHT</strong> table.</p>
+				<hr/>
+				<h3>Primary Key</h3>
+				<p><strong>Primary key</strong> is a column that serves a unique identifier for th rows in the table.</p>
+				<hr/>
+				<h3>Foreign Key</h3>
+				<p><strong>Foreign key</strong> is a column that contains the primary key to another table.</p>
+				<hr/>
+				<h3><code>CROSS JOIN</code></h3>
+				<p><code>CROSS JOIN</code> lets us combine all rows of one table with all rows of another table.</p>
+				<hr/>
+				<h3><code>UNION</code></h3>
+				<p><code>UNION</code> stacks one dataset on top of another.</p>
+				<hr/>
+				<h3><code>WITH</code></h3>
+				<p><code>WITH</code> allows use to define one or more temporary tables that can be used in the final query.</p>
+			</div> 
+		</main>
+		<footer>
+			<h6>
+				Nov. 2020&nbsp;&nbsp;M.Hand&nbsp;&nbsp;<a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a>
+			</h6> 
+		</footer>
+	</body>
+</html>
